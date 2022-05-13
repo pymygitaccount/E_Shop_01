@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container">    <!-- provides the margin in both left and right side -->
+    <div class="p-4 m-4">   <!-- p-1 &  m-4 provides the pedding and margin--> 
+        <div class="col-lg-4 mt-4 mb-4 mx-auto border rounded pt-4">   <!-- col-lg-4 --is used for whidth size . Actual sceen is divided in 12 parts-->
+            <h3 class="alert alert-light border rounded mt-4 mb-4">Login Here</h3>
+            <form action="/login" method="POST"> 
+                {% csrf_token %}  <!--csrf tokken used for securtiy purpose-->
+                
+                {% if error %}
+                    <div class="alert alert-danger" role="alert">
+                        <b>{{error}}</b>
+                    </div>
+                {% endif %}
+
+                <!-- emial-->
+                <div class="form-group">
+                  <label for="">Email</label>
+                  <input type="email" name="useremail" id="" value="{{values.Email_ID}}" class="form-control" placeholder="example@gmail.com">
+                </div>
+
+                <!-- password-->
+                <div class="form-group">
+                    <label for="">Password</label>
+                    <input type="password" name="userpassword" id="" class="form-control" placeholder="***********">
+                </div>
+
+                <!-- Creating Buttun for submite values-->
+                <div class="form-group">
+                    <input class="btn btn-sm btn-info col-lg-4" type="submit" value="Login">
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

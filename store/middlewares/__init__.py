@@ -1,0 +1,1 @@
+from store.middlewares.auth import *
